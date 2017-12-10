@@ -1,0 +1,24 @@
+#include <vector>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+ 
+typedef struct btnode
+{
+	btnode *left, *right;
+	int weight;
+}btnode,*bittree;
+int wpl(bittree root)
+{
+	return fs(root, 0);
+}
+int fs(bittree boot,int deep)
+{
+	int res = 0;
+	if (boot->left == NULL &&boot->right == NULL)return boot->weight*deep;
+	if (boot->left != NULL)res+=fs(boot->left,deep+1);
+	if (boot->right != NULL)res += fs(boot->right, deep + 1);
+	return res;
+}
+
